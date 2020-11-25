@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN" "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+<resources>
+    <jdbc-connection-pool
+        datasource-classname="oracle.jdbc.pool.OracleDataSource" 
+        res-type="javax.sql.DataSource" 
+        name="OraclePool"> 
+        <property name="User" value="SHIN"/> 
+        <property name="Password" value="password"/>
+        <property name="URL" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+    </jdbc-connection-pool>
+    <jdbc-resource jndi-name="java:app/jdbc/users" pool-name="OraclePool">
+        <description>DataSource for Data Encryption</description>
+    </jdbc-resource>
+ </resources>

@@ -1,0 +1,35 @@
+{
+	"folders": {},
+	"connections": {
+		"h2_server-174d8d8b1eb-65ec53533a99394c": {
+			"provider": "generic",
+			"driver": "h2_server",
+			"name": "test",
+			"save-password": true,
+			"show-system-objects": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "12345",
+				"database": "~/20fcustomers",
+				"url": "jdbc:h2:tcp://localhost:12345/~/20fcustomers",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
+			},
+			"custom-properties": {
+				"database.meta.separate.connection": "false"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}

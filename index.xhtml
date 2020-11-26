@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+  >
+  <!-- View that adds new Customer -->
+
+  <h:head>
+    <!-- title of tab/window in browser -->
+    <title>#{uiconsts['viewTitle']}</title>
+    <f:metadata>
+    <!-- use our knowlege of JSF phases to ask Controller to load/refresh its model list -->
+    <f:viewAction action="#{UserController.loadUsers()}" phase="UPDATE_MODEL_VALUES" /> 
+  </f:metadata>
+    <style>
+        table {
+          border: solid 1px #DDEEEE;
+          border-collapse: collapse;
+          border-spacing: 0;
+          table-layout: auto;
+          width: 95%;
+        }
+        table td {
+          border: solid 1px #DDEEEE;
+        }
+        table th {
+          border: solid 1px black;
+          background-color: #d8d8d8;
+        }
+        table tr:nth-child(even) {
+          background: #f2f2f2;
+        }
+        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+          background-color: #f0f0e0;
+        }
+        caption {
+          white-space: nowrap;
+          caption-side: bottom;
+        }
+    </style>
+ 
+  </h:head>
+  
+  <h:body>
+    <h2>#{uiconsts['viewTitle']}</h2>
+    <br />
+    <h:form>
+    
+    <h:dataTable value="#{UserController.users}" var="user"
+        styleClass="table table-hover">
+        <h:column>
+          <f:facet name="header">#{uiconsts['columnLabel_Id']}</f:facet>
+          <h:outputText value="#{user.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">#{uiconsts['columnLabel_FirstName']}</f:facet>
+            <h:outputText value="#{user.password}"/>
+        </h:column>
+    
+      <!-- Javascript onclick-handler cannot use 'map-style' uiconsts['something'], use 'properties-style'  -->
+      <h:commandButton value="#{uiconsts['addButtonLabel']}" action="#{userController.navigateToAddForm()}" />
+    <!-- <h:commandButton value="#{uiconsts['loginButtonLabel']}" action="#{userController.navigateToLoginForm()}" /> -->  
+      <h:commandButton value="#{uiconsts['decryptThePasswords']}" action="#{userController.decryptUser()}" />
+      <p/>  
+      </h:dataTable>    
+    </h:form>
+  </h:body>
+</html>
